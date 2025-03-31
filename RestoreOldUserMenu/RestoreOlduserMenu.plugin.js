@@ -1,14 +1,33 @@
 /**
  * @name RestoreOldUserMenu
- * @version 1.4
- * @description Restore the old user menu style - test
+ * @version 1.4.3
+ * @description Restore the old user menu style
  * @updateUrl https://raw.githubusercontent.com/Szysiu/BetterDiscordPlugins/main/RestoreOldUserMenu/RestoreOlduserMenu.plugin.js
  * @downloadUrl https://raw.githubusercontent.com/Szysiu/BetterDiscordPlugins/main/RestoreOldUserMenu/RestoreOlduserMenu.plugin.js
  * @author Szysiu#1878
  */
 
+const config = {
+    info: {
+        name: "RestoreOldUserMenu",
+        authors: [
+            {
+                name: "Szysiu"
+            }
+        ],
+        version: "1.4.3",
+        description: "Restore the old user menu style.",
+        github_raw: "https://raw.githubusercontent.com/Szysiu/BetterDiscordPlugins/main/RestoreOldUserMenu/RestoreOlduserMenu.plugin.js",
+    },
+    changelog: [
+
+    ],
+    defaultConfig: []
+};
+
 module.exports = class RestoreOldUserMenu {
     constructor() {
+        this._config = config;
         this.observer = null
         this.start();
     }
