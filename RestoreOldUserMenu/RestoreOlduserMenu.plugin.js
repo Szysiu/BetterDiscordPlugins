@@ -2,12 +2,13 @@
  * @name RestoreOldUserMenu
  * @version 1.1
  * @description Restore the old user menu style
- * @updateUrl https://raw.githubusercontent.com/Szysiu/BetterDiscordPlugins/main/RestoreOldUserMenu/RestoreOlduserMenu.plugin.jsgi
+ * @updateUrl https://raw.githubusercontent.com/Szysiu/BetterDiscordPlugins/main/RestoreOldUserMenu/RestoreOlduserMenu.plugin.js
  * @author Szysiu#1878
  */
 
 module.exports = class RestoreOldUserMenu {
     constructor() {
+        this.observer = null
         this.start();
     }
 
@@ -33,15 +34,33 @@ module.exports = class RestoreOldUserMenu {
     sidebarListOnResize(menu) {
         const sidebarList = document.querySelector('.sidebarList_c48ade')
 
-        const reziseObserver = new ResizeObserver(() => {
+        this.observer = new ResizeObserver(() => {
             let sidebarListWidth = sidebarList.offsetWidth
             menu.style.setProperty("width", `${sidebarListWidth}px`, "important")
         })
 
-        reziseObserver.observe(sidebarList)
+        this.observer.observe(sidebarList)
+    }
+
+    revertChanges() {
+        const menu = document.querySelector('.panels_c48ade')
+
+        if(!menu) {
+            console.error(`Object ${menu} not found`)
+        }
+
+        menu.style.removeProperty("left")
+        menu.style.removeProperty("border-radius")
+        menu.style.removeProperty("box-sizing")
+        menu.style.removeProperty("width")
+
+        if(this.observer) {
+            this.observer.disconnect()
+            this.observer = null
+        }
     }
 
     stop() {
-        
+        this.revertChanges()
     }
 };
