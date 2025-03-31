@@ -17,14 +17,14 @@ module.exports = class RestoreOldUserMenu {
     }
 
     adjustMenuWidth() {
-        const leftPannelWidth = document.querySelector('.itemsContainer_ef3116').offsetWidth
+        const leftPanelWidth = document.querySelector('.itemsContainer_ef3116').offsetWidth
         const menu = document.querySelector('.panels_c48ade')
 
-        if(!menu || leftPannelWidth) {
+        if(!menu || leftPanelWidth) {
             console.error('Required DOM elements not found')
         }
 
-        menu.style.setProperty("left", `${leftPannelWidth}px`, "important")
+        menu.style.setProperty("left", `${leftPanelWidth}px`, "important")
         menu.style.setProperty("border-radius", '0px', "important")
         menu.style.setProperty("box-sizing", 'content-box', "important")
 
