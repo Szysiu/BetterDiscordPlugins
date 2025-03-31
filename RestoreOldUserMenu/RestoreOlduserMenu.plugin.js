@@ -40,7 +40,7 @@ module.exports = class RestoreOldUserMenu {
         const leftPanelWidth = document.querySelector('.itemsContainer_ef3116').offsetWidth
         const menu = document.querySelector('.panels_c48ade')
 
-        if(!menu || leftPanelWidth) {
+        if(!menu || !leftPanelWidth) {
             console.error('Required DOM elements not found')
         }
 
