@@ -1,7 +1,7 @@
 /**
  * @name RestoreOldUserMenu
  * @version 1.4
- * @description Restore the old user menu style
+ * @description Restore the old user menu style - test
  * @updateUrl https://raw.githubusercontent.com/Szysiu/BetterDiscordPlugins/main/RestoreOldUserMenu/RestoreOlduserMenu.plugin.js
  * @downloadUrl https://raw.githubusercontent.com/Szysiu/BetterDiscordPlugins/main/RestoreOldUserMenu/RestoreOlduserMenu.plugin.js
  * @author Szysiu#1878
