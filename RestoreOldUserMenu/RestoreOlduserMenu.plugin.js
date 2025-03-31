@@ -1,27 +1,32 @@
 /**
  * @name RestoreOldUserMenu
- * @version 1.0
+ * @version 1.1
  * @description Restore the old user menu style
- * @updateUrl https://raw.githubusercontent.com/Szysiu/BetterDiscordPlugins/refs/heads/main/RestoreOldUserMenu/RestoreOlduserMenu.plugin.js
+ * @updateUrl https://raw.githubusercontent.com/Szysiu/BetterDiscordPlugins/main/RestoreOldUserMenu/RestoreOlduserMenu.plugin.js
  * @author Szysiu#1878
  */
 
 module.exports = class RestoreOldUserMenu {
     constructor() {
+        this.observer = null
         this.start();
     }
 
     start() {
-        this.adjustMenuWidth();
+        this.adjustMenuWidth()
     }
 
     adjustMenuWidth() {
-        const leftPannelWidth = document.querySelector('.itemsContainer_ef3116').offsetWidth;
-        const menu = document.querySelector('.panels_c48ade');
+        const leftPannelWidth = document.querySelector('.itemsContainer_ef3116').offsetWidth
+        const menu = document.querySelector('.panels_c48ade')
 
-        menu.style.setProperty("left", `${leftPannelWidth}px`, "important");
-        menu.style.setProperty("border-radius", '0px', "important");
-        menu.style.setProperty("box-sizing", 'content-box', "important");
+        if(!menu || leftPannelWidth) {
+            console.error('Required DOM elements not found')
+        }
+
+        menu.style.setProperty("left", `${leftPannelWidth}px`, "important")
+        menu.style.setProperty("border-radius", '0px', "important")
+        menu.style.setProperty("box-sizing", 'content-box', "important")
 
         this.sidebarListOnResize(menu)
     }
@@ -29,15 +34,33 @@ module.exports = class RestoreOldUserMenu {
     sidebarListOnResize(menu) {
         const sidebarList = document.querySelector('.sidebarList_c48ade')
 
-        const reziseObserver = new ResizeObserver(() => {
+        this.observer = new ResizeObserver(() => {
             let sidebarListWidth = sidebarList.offsetWidth
             menu.style.setProperty("width", `${sidebarListWidth}px`, "important")
         })
 
-        reziseObserver.observe(sidebarList)
+        this.observer.observe(sidebarList)
+    }
+
+    revertChanges() {
+        const menu = document.querySelector('.panels_c48ade')
+
+        if(!menu) {
+            console.error(`Object ${menu} not found`)
+        }
+
+        menu.style.removeProperty("left")
+        menu.style.removeProperty("border-radius")
+        menu.style.removeProperty("box-sizing")
+        menu.style.removeProperty("width")
+
+        if(this.observer) {
+            this.observer.disconnect()
+            this.observer = null
+        }
     }
 
     stop() {
-        
+        this.revertChanges()
     }
 };
