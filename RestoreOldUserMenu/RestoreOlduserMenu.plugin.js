@@ -1,6 +1,6 @@
 /**
  * @name RestoreOldUserMenu
- * @version 1.4.4
+ * @version 1.4.5
  * @description Restore the old user menu style.
  * @updateUrl https://raw.githubusercontent.com/Szysiu/BetterDiscordPlugins/main/RestoreOldUserMenu/RestoreOlduserMenu.plugin.js
  * @github https://github.com/Szysiu/BetterDiscordPlugins/tree/main/RestoreOldUserMenu
@@ -12,7 +12,7 @@ const config = {
     info: {
         name: "RestoreOldUserMenu",
         authors: [{ name: "Szysiu" }],
-        version: "1.4.4",
+        version: "1.4.5",
         description: "Restore the old user menu style.",
         github_raw: "https://raw.githubusercontent.com/Szysiu/BetterDiscordPlugins/main/RestoreOldUserMenu/RestoreOlduserMenu.plugin.js",
     },
